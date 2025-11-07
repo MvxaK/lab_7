@@ -38,7 +38,7 @@ public class CelebrityController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> createCelebrity(@PathVariable Long id, @RequestBody CelebrityDto celebrityDto){
+    public ResponseEntity<?> updateCelebrity(@PathVariable Long id, @RequestBody CelebrityDto celebrityDto){
         CelebrityDto celebrity = celebrityService.updateCelebrity(id, celebrityDto);
 
         return ResponseEntity.ok(celebrity);
