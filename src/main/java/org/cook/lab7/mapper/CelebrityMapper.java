@@ -2,31 +2,17 @@ package org.cook.lab7.mapper;
 
 import org.cook.lab7.dto.CelebrityDto;
 import org.cook.lab7.entity.CelebrityEntity;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Component
-public class CelebrityMapper {
+@Mapper(componentModel = "spring")
+public interface CelebrityMapper {
 
-    public CelebrityDto toModel(CelebrityEntity entity){
-        CelebrityDto dto = new CelebrityDto();
-        dto.setId(entity.getId());
-        dto.setName(entity.getName());
-        dto.setSurname(entity.getSurname());
-        dto.setPseudonyms(entity.getPseudonyms());
-        dto.setBirthDay(entity.getBirthDay());
-        dto.setAlive(entity.isAlive());
+    @Mapping(target = "agencyId", source = "agency.id")
+    @Mapping(target = "filmsId", expression = "java(entity.getFilms() != null ? entity.getFilms().stream().map(film -> film.getId()).toList() : new java.util.ArrayList<>())")
+    CelebrityDto toModel(CelebrityEntity entity);
 
-        return dto;
-    }
-
-    public CelebrityEntity toEntity(CelebrityDto dto){
-        CelebrityEntity entity = new CelebrityEntity();
-        entity.setName(dto.getName());
-        entity.setSurname(dto.getSurname());
-        entity.setPseudonyms(dto.getPseudonyms());
-        entity.setBirthDay(dto.getBirthDay());
-        entity.setAlive(dto.isAlive());
-
-        return entity;
-    }
+    @Mapping(target = "agency", ignore = true)
+    @Mapping(target = "films", ignore = true)
+    CelebrityEntity toEntity(CelebrityDto dto);
 }

@@ -11,10 +11,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CelebrityDto {
+
     private Long id;
     private String name;
     private String surname;
     private List<String> pseudonyms;
     private LocalDate birthDay;
     private boolean alive;
+    private Long agencyId;
+    private List<Long> filmsId;
+
 }

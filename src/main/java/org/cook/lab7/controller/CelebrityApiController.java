@@ -1,18 +1,17 @@
 package org.cook.lab7.controller;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.cook.lab7.dto.CelebrityDto;
-import org.cook.lab7.service.CelebrityServiceImpl;
+import org.cook.lab7.service.Impl.CelebrityServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/celebrity")
+@RequestMapping("/api/celebrities")
 @RequiredArgsConstructor
-public class CelebrityController {
+public class CelebrityApiController {
 
     private final CelebrityServiceImpl celebrityService;
 

@@ -7,9 +7,9 @@ import java.util.List;
 
 @Service
 public interface CelebrityService {
-    CelebrityDto createCelebrity(CelebrityDto celebrityDto);
     CelebrityDto getCelebrityById(Long id);
     List<CelebrityDto> getAllCelebrity();
+    CelebrityDto createCelebrity(CelebrityDto celebrityDto);
     CelebrityDto updateCelebrity(Long id, CelebrityDto ToUpdate);
     void deleteCelebrity(Long id);
 }

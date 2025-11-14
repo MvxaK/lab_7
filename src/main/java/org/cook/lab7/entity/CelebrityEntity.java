@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,5 +34,12 @@ public class CelebrityEntity {
 
     @Column(name = "is_alive")
     private boolean alive;
+
+    @ManyToOne
+    @JoinColumn(name = "agency_id")
+    private AgencyEntity agency;
+
+    @ManyToMany(mappedBy = "celebrities")
+    private List<FilmEntity> films;
 
 }
